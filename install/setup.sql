@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}document_groups` (
 
 CREATE TABLE IF NOT EXISTS `{PREFIX}documentgroup_names` (
   `id` int(10) NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
+  `name` varchar(191) NOT NULL default '',
   `private_memgroup` tinyint DEFAULT 0 COMMENT 'determine whether the document group is private to manager users',
   `private_webgroup` tinyint DEFAULT 0 COMMENT 'determines whether the document is private to web users',
   PRIMARY KEY  (`id`),
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}membergroup_access` (
 
 CREATE TABLE IF NOT EXISTS `{PREFIX}membergroup_names` (
   `id` int(10) NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
+  `name` varchar(191) NOT NULL default '',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM COMMENT='Contains data used for access permissions.';
@@ -106,10 +106,10 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}site_content` (
   `id` int(10) NOT NULL auto_increment,
   `type` varchar(20) NOT NULL default 'document',
   `contentType` varchar(50) NOT NULL default 'text/html',
-  `pagetitle` varchar(255) NOT NULL default '',
+  `pagetitle` varchar(191) NOT NULL default '',
   `longtitle` varchar(255) NOT NULL default '',
-  `description` varchar(255) NOT NULL default '',
-  `alias` varchar(255) default '',
+  `description` varchar(191) NOT NULL default '',
+  `alias` varchar(191) default '',
   `link_attributes` varchar(255) NOT NULL default '' COMMENT 'Link attriubtes',
   `published` int(1) NOT NULL default '0',
   `pub_date` int(20) NOT NULL default '0',
@@ -475,7 +475,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}webgroup_access` (
 
 CREATE TABLE IF NOT EXISTS `{PREFIX}webgroup_names` (
   `id` int(10) NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
+  `name` varchar(191) NOT NULL default '',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM COMMENT='Contains data used for web access permissions.';
@@ -566,8 +566,8 @@ ALTER TABLE `{PREFIX}event_log` MODIFY COLUMN `description` text;
 ALTER TABLE `{PREFIX}manager_users` MODIFY COLUMN `username` varchar(100) NOT NULL DEFAULT '';
 
 ALTER TABLE `{PREFIX}site_content` 
- MODIFY COLUMN `pagetitle` varchar(255) NOT NULL default '',
- MODIFY COLUMN `alias` varchar(255) default '',
+ MODIFY COLUMN `pagetitle` varchar(191) NOT NULL default '',
+ MODIFY COLUMN `alias` varchar(191) default '',
  MODIFY COLUMN `introtext` text COMMENT 'Used to provide quick summary of the document',
  MODIFY COLUMN `content` mediumtext,
  MODIFY COLUMN `menutitle` varchar(255) NOT NULL DEFAULT '' COMMENT 'Menu title';
